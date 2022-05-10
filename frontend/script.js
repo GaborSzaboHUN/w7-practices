@@ -97,3 +97,14 @@ const loadEvent = function (parameter1) {
 }
 
 window.addEventListener("load", loadEvent)
+
+function squareDigits(num){
+    let text = num.toString();
+    let total = "";
+
+    for(let i in text){
+        total += (parseInt(text[i]**2))
+    }
+
+    console.log(parseInt(total));
+}
