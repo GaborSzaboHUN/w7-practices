@@ -24,7 +24,7 @@
 
             width: 40px;
             height: 4px;
-            background-color: greenyellow;
+            background-color: whitesmoke;
             transition: top 400ms, transform 500ms;
         }
 
@@ -38,10 +38,15 @@
     }
 
     &.menu-open {
-        background-color: azure;
+        background-color: whitesmoke;
 
         #menu-btn {
-            background-color: gray;
+            background-color: whitesmoke;
+
+            &::before,
+            &::after {
+                background-color: crimson;
+            }
 
             &::before {
                 top: 28px;
@@ -53,6 +58,10 @@
                 transform: rotate(-45deg);
             }
 
+        }
+
+        nav {
+            right: 0;
         }
     }
 
@@ -69,7 +78,7 @@
         z-index: 99;
 
         top: 0;
-        right: 0;
+        right: -300px;
 
         width: 300px;
         height: 100vh;
@@ -78,6 +87,8 @@
 
         background-color: black;
         color: white;
+
+        transition: 400ms, transform 500ms;
 
         a {
             display: block;
