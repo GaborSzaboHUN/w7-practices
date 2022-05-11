@@ -1,0 +1,56 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ccc;
+}
+
+#root #menu-btn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  top: 0;
+  right: 0;
+  background-color: black;
+}
+
+#root #menu-btn::before, #root #menu-btn::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  width: 40px;
+  height: 4px;
+  background-color: greenyellow;
+  -webkit-transition: top 400ms, -webkit-transform 500ms;
+  transition: top 400ms, -webkit-transform 500ms;
+  transition: top 400ms, transform 500ms;
+  transition: top 400ms, transform 500ms, -webkit-transform 500ms;
+}
+
+#root #menu-btn::before {
+  top: 20px;
+}
+
+#root #menu-btn::after {
+  bottom: 20px;
+}
+
+#root.menu-open {
+  background-color: azure;
+}
+
+#root.menu-open #menu-btn {
+  background-color: gray;
+}
+
+#root.menu-open #menu-btn::before {
+  top: 28px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#root.menu-open #menu-btn::after {
+  bottom: 28px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+/*# sourceMappingURL=style.css.map */

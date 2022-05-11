@@ -1,110 +1,79 @@
-console.log(varVariable);
+const menuButtonComponent = function () {
+    return `<button id="menu-btn"></button>`
+}
 
-let globalVariable1 = 12;
+const beerSectionComponent = function (title, sub, text, id) {
+    return `
+    <section id="${id}">
+        <h1 class="beerName">${title}</h1>
+        <h2 class="beerCompany">${sub}</h2>
+        <h3 class="beerType">${text}</h3>
+    </section>
+    `
+}
 
-let globalVariable2 = function () {
-    console.log("inside the function ", globalVariable1);
+const beerAnchorComponent = function (title, id) {
+    return `
+        <a href=#${id}>${title}</a>
+    `
+}
 
-    let funVariable1 = "hello"
+const beerNavComponent = function (inner) {
+    return `
+        <nav>${inner}</nav>
+    `
+}
 
-    let funVariable2 = function (){
-        console.log("funVariable2 belseje");
-        console.log(globalVariable1);
-        console.log(funVariable1);
-        
-        let funInFunVariable1 = true;
-        console.log(funInFunVariable1);
+const menuButtonClickEvent = function (e) {
 
-        let funInFunVariable2 = function(){
-            console.log(funInFunVariable1);
-        }
-        funInFunVariable2();
-    }
+    e.currentTarget.closest("#root").classList.toggle("menu-open")
+}
+
+
+
+
+
+
+const loadEvent = function () {
+    /* 
+        console.log(typeof beerSectionComponent);
+        console.log(typeof beerSectionComponent());
     
-    funVariable2();
-    
-    console.log(funVariable1);
+        (function () {
+            console.log("blablabla");
+        })();
+     */
 
-    if(funVariable1 === "hello"){
-        var blockVariable1 = "Bye"
-    } else {
-        /* console.log(blockVariable1);*/    
-    }
-    
-    console.log(blockVariable1);
-}
-
-// meghívom a globalVariable2 függvényt
-globalVariable2()
-
-/* console.log(funVariable1);
- */
-
-var varVariable = 1;
-
-let letVariable1;
-console.log(letVariable1);
-
-let letVariable2 = "variable 2";
-console.log(letVariable2);
-
-const constVariable = "Ciao";
-// constVariable = "hello";
-console.log(constVariable)
-
-const constObj1 = {};
-// constObj1.key = "value";
-// constObj1 = {key: "value"};
-console.log(constObj1);
-
-const globalVariable3 = function (parameter1, parameter2, parameter3) {
-    console.log(parameter1);
-    console.log(parameter2);
-    console.log(parameter3);
-    console.log(parameter3());
-}
-
-const globalVariable4 = "apple";
-
-const globalVariable5 = function () {
-    return "pear"
-}
-
-const globalVariable6 = function () {
-    return "shoes"
-}
-
-globalVariable3(globalVariable5(), globalVariable4, globalVariable6);
-
-
-
-
-
-
-
-
-const loadEvent = function (parameter1) {
     const rootElement = document.getElementById("root")
-    console.log(rootElement);
-    console.log(parameter1);
-    // console.log(globalVariable1);
 
-    rootElement.addEventListener("click", function (event){
-        console.log(event.currentTarget);
-        event.currentTarget.insertAdjacentHTML("beforeend", `<span>Clicked </span>`)
-        event.currentTarget.classList.toggle("clicked")
-    })
+    rootElement.insertAdjacentHTML("beforeend", menuButtonComponent())
+
+    const menuButtonElement = document.getElementById("menu-btn")
+
+    menuButtonElement.addEventListener("click", menuButtonClickEvent)
+
+
+
+
+    let beerSections = ""
+    for (const beer of beers.cards) {
+        beerSections += beerSectionComponent(beer.title, beer.sub, beer.text)
+    }
+    console.log(beerSections)
+    rootElement.insertAdjacentHTML("beforeend", beerSections)
+
+
+
+
+    let beerAnchors = ""
+    for (const beer of beers.cards) {
+        beerAnchors += beerAnchorComponent(beer.title)
+    }
+    console.log(beerAnchors)
+    rootElement.insertAdjacentHTML("beforeend", beerNavComponent(beerAnchors))
 }
+
+
+
 
 window.addEventListener("load", loadEvent)
-
-function squareDigits(num){
-    let text = num.toString();
-    let total = "";
-
-    for(let i in text){
-        total += (parseInt(text[i]**2))
-    }
-
-    console.log(parseInt(total));
-}
